@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fluidos en Acción</title>
+  <link rel="stylesheet" href="gpt.css">
+</head>
+<body>
+
+<!-- Pantalla inicial -->
+<div id="pantalla-inicio" class="pantalla-activa">
+  <div class="intro-container">
+    <h1>🌊 ¡Bienvenido(a) a Fluidos en Acción!</h1>
+    <p>
+      Explora las propiedades fundamentales de los fluidos: 
+      <b>Viscosidad, Tensión Superficial y Presión</b>.<br>
+      Ingresa tu nombre y correo electrónico para comenzar la experiencia interactiva.
+    </p>
+    <input type="text" id="nombreUsuario" placeholder="Escribe tu nombre...">
+    <input type="email" id="correoUsuario" placeholder="Escribe tu correo electrónico...">
+    <button id="btnContinuar" onclick="iniciarPagina()">Comenzar</button>
+  </div>
+</div>
+
+<!-- Pantalla de selección de tema -->
+<div id="pantalla-temas" class="pantalla-oculta">
+  <h2 id="saludo"></h2>
+  <p>Selecciona el tema que deseas explorar:</p>
+  <div class="temas">
+    <button onclick="mostrarTema('viscosidad')">💧 Viscosidad</button>
+    <button onclick="mostrarTema('tension')">🌐 Tensión Superficial</button>
+    <button onclick="mostrarTema('presion')">⚙ Presión</button>
+  </div>
+</div>
+
+<!-- Pantallas de temas -->
+<div id="tema-viscosidad" class="pantalla-oculta">
+  <button class="btn-volver" onclick="volverTemas()">⬅ Volver</button>
+  <div class="banner"><img src="Imagenes/fluidos en accion.png" width="450"></div>
+  <h1>💧 Viscosidad</h1>
+  <p class="intro-tema">
+    La viscosidad es la resistencia interna de un fluido a fluir o deformarse. 
+    Es una propiedad crucial en ingeniería que determina la fricción interna entre las capas de un fluido en movimiento.
+  </p>
+  
+  <!--PUNTO 1 DE VISCOSIDAD-->
+  <div class="Ejercicio-Interactivo" id="viscosidad1">
+    <h4>1. Una esfera tiene un radio de 0.3 m y gira a una velocidad constante
+      de 200 rpm. Una película de un fluido, con un espesor de 0.5 mm,
+      separa la esfera de un contenedor esférico en reposo. Si el torque requerido
+      para hacer girar la esfera en las condiciones indicadas es de 0.284 Nm, calcule
+      la viscosidad del fluido.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Visco1.1.png" width="250"></div>
+    <div class="pregunta">
+      <label for="viscosidad1-input">Respuesta en (Pa*s): </label>
+      <input type="number" id="viscosidad1-input" step="0.001" placeholder="Digite la respuesta aquí con '.' (punto decimal) y en notacion decimal ej: 0.00001">
+      <div class="feedback" id="fb-viscosidad1"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicio('viscosidad1')">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('viscosidad1')">Mostrar Solución</button>
+    <div id="solucion-viscosidad1" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=RONPD3gDwi0">
+        <div class="banner"><img src="ImagSoluciones/solucion-visco1.1.png" alt="Solución del ejercicio 1.1 de viscosidad" width="500"></div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=RONPD3gDwi0">
+        <div class="banner"><img src="ImagSoluciones/solucion-visco1.2.png" alt="Solución del ejercicio 1.2 de viscosidad" width="500"></div>
+      </a>
+    </div>
+  </div>
+
+  <!--VISCOSIDAD PUNTO 2-->
+  <div class="Ejercicio-Interactivo" id="viscosidad2">
+    <h4>2. Se va a medir la viscosidad de un fluido con un viscosimetro construido con dos cilindros
+      concéntricos de 3 ft de largo. <br>El diámetro interior del cilindro exterior mide 6 in
+      y la brecha entre los dos cilindros es de 0.05 in. Se hace girar a 250 rpm y se 
+      mide que el par de torsión es de 1.2 lb*ft.<br> Determine la viscosidad del fluido.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Visco2.png" width="250"></div>
+    <div class="pregunta">
+      <label for="viscosidad2-input">Respuesta en (lb*s/ft<sup>2</sup>): </label>
+      <input type="number" id="viscosidad2-input" step="0.0001" placeholder="Digite la respuesta aquí con '.' (punto decimal) y en notacion decimal ej: 0.00001">
+      <div class="feedback" id="fb-viscosidad2"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioViscosidad2()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('viscosidad2')">Mostrar Solución</button>
+    <div id="solucion-viscosidad2" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=3W_F2ECjzBM">
+        <div class="banner"><img src="ImagSoluciones/solucion-visco2.png" alt="Solución del ejercicio 2 de viscosidad" width="500"></div>
+      </a>
+    </div>
+  </div>
+
+  <!--VISCOSIDAD PUNTO 3-->
+  <div class="Ejercicio-Interactivo" id="viscosidad3">
+    <h4>3. El cilindro mostrado se desliza dentro de un tubo lubricado cuya capa del lubricante
+      es de 0.06 mm. <br>Cuando lleva una velocidad de 7 m/s presenta una 
+      desaceleración de 0.55 m/s<sup>2</sup>. Sabiendo que el cilindro pesa 100 N, determinar
+      la viscosidad del lubricante.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Visco3.png" width="250"></div>
+    <div class="pregunta">
+      <label for="viscosidad3-input">Respuesta en (Pa*s): </label>
+      <input type="number" id="viscosidad3-input" step="0.001" placeholder="Digite la respuesta aquí con '.' (punto decimal) y en notacion decimal ej: 0.00001">
+      <div class="feedback" id="fb-viscosidad3"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioViscosidad3()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('viscosidad3')">Mostrar Solución</button>
+    <div id="solucion-viscosidad3" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=mOHioXhdl7s">
+        <div class="banner"><img src="ImagSoluciones/solucion-visco3.png" alt="Solución del ejercicio 3 de viscosidad" width="500"></div>
+      </a>
+    </div>
+  </div>
+
+  <!--VISCOSIDAD 4 PUNTOOOO-->
+  <div class="Ejercicio-Interactivo" id="viscosidad4">
+    <h4>4. Se sabe que un disco horizontal gira a 320 rpm sobre una superficie a una distancia de 0.1 in.<br>
+      El diámetro del disco es de 5 in, si el torque requerido para que mueva en las condiciones indicadas
+      es de 1 × 10<sup>-3</sup> lb·ft, determine la viscosidad del fluido.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Visco4.png" width="350"></div>
+    <div class="pregunta">
+      <label for="viscosidad4-input">Respuesta en (lb*s/ft<sup>2</sup>): </label>
+      <input type="number" id="viscosidad4-input" step="0.0001" placeholder="Digite la respuesta aquí con '.' (punto decimal) y en notacion decimal ej: 0.00001">
+      <div class="feedback" id="fb-viscosidad4"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioViscosidad4()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('viscosidad4')">Mostrar Solución</button>
+    <div id="solucion-viscosidad4" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=Ppzas_xxBUo">
+        <div class="banner"><img src="ImagSoluciones/solucion-visco4.png" alt="Solución del ejercicio 4 de viscosidad" width="500"></div>
+      </a>
+    </div>
+  </div>
+</div> <!-- Cierre de tema-viscosidad -->
+
+<div id="tema-tension" class="pantalla-oculta">
+  <button class="btn-volver" onclick="volverTemas()">⬅ Volver</button>
+  <div class="banner"><img src="Imagenes/fluidos en accion.png" width="450"></div>
+  <h1>🌐 Tensión Superficial</h1>
+  <p class="intro-tema">
+    La tensión superficial es la fuerza que actúa en la superficie de un líquido, 
+    haciendo que se comporte como una película elástica debido a las fuerzas de cohesión.
+  </p>
+
+  <!--PUNTOOOO TENSION 1-->
+  <div class="Ejercicio-Interactivo" id="tension1">
+    <h4>1. Contrario a lo que el lector podría esperar, una bola de acero sólido puede flotar sobre el agua debido al
+      efecto de tensión superficial.<br>Determine el diámetro máximo de una bola de acero que flotaría sobre agua a 20°C.
+      ¿Cuál sería su respuesta para una bola de aluminio?<br>
+      Tome la densidad de la bola de acero y de aluminio como 7800 kg/m<sup>3</sup> y 2700 kg/m<sup>3</sup>, respectivamente.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Tensi1.png" width="250"></div>
+    <div class="pregunta">
+      <label for="tension1-input">Diámetro máximo de la bola de acero (mm): </label>
+      <input type="number" id="tension1-input" step="0.01" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo tres cifras significativas">
+      <div class="feedback" id="fb-tension1"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioTension1()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('tension1')">Mostrar Solución</button>
+    <div id="solucion-tension1" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=BM-ipfD3hX0" target="_blank" rel="noopener">
+        <div class="banner">
+          <img src="ImagSoluciones/solucion-presion1.png" alt="Solución del ejercicio 1 de tensión superficial" width="500">
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!--PUNTOOO TENSION 2 -->
+  <div class="Ejercicio-Interactivo" id="tension2">
+    <h4>2. La parte superior de un tanque de agua está dividida en dos compartimientos, como se muestra en la figura.<br>
+      Ahora se vierte un fluido con una densidad desconocida en uno de los lados y el nivel del agua se eleva a cierta cantidad en el otro lado para compensar el efecto que se produce.<br> 
+      Con base en las alturas finales de los fluidos, mostradas en la figura, determine la densidad del fluido añadido. Suponga que el líquido no se mezcla con el agua.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Tensi2.png" width="250"></div>
+    <div class="pregunta">
+      <label for="tension2-input">Respuesta en (kg/m<sup>3</sup>): </label>
+      <input type="number" id="tension2-input" step="1" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo tres cifras significativas">
+      <div class="feedback" id="fb-tension2"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioTension2()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('tension2')">Mostrar Solución</button>
+    <div id="solucion-tension2" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=BM-ipfD3hX0" target="_blank" rel="noopener">
+        <div class="banner">
+          <img src="ImagSoluciones/solucion-tension2.png" alt="Solución del ejercicio 2 de tensión superficial" width="500">
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!--PUNTO TENSION 3-->
+  <div class="Ejercicio-Interactivo" id="tension3">
+    <h4>3. Determine el descenso del mercurio por capilaridad a 60°F, en un recipiente de vidrio que tiene un diámetro
+      de 0.7 in.<br> Sabiendo que el ángulo de contacto es de 140°. Se sabe que la tensión superficial del mercurio 
+      en las condiciones indicadas es 30.15 × 10<sup>-3</sup> N/m.<br> 
+      Considere la densidad relativa del mercurio igual a 13.57.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Tensi3.png" width="350"></div>
+    <div class="pregunta">
+      <label for="tension3-input">Respuesta en (in): </label>
+      <input type="number" id="tension3-input" step="0.01" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo cuatro cifras significativas">
+      <div class="feedback" id="fb-tension3"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioTension3()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('tension3')">Mostrar Solución</button>
+    <div id="solucion-tension3" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=Q2znr2HDO3s">
+        <div class="banner"><img src="ImagSoluciones/solucion-tension3.png" alt="Solución del ejercicio 3 de presion" width="500"></div>
+      </a>
+    </div>
+  </div>
+</div> <!-- Cierre de tema-tension -->
+
+<div id="tema-presion" class="pantalla-oculta">
+  <button class="btn-volver" onclick="volverTemas()">⬅ Volver</button>
+  <div class="banner"><img src="Imagenes/fluidos en accion.png" width="450"></div>
+  <h1>⚙ Presión</h1>
+  <p class="intro-tema">
+    La presión es la fuerza ejercida por un fluido por unidad de área. 
+    En los fluidos en reposo actúa en todas las direcciones y aumenta con la profundidad.
+  </p>
+
+  <!--PRESIOOOOOOOOOOOOOOOOOOOOON UNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO-->
+  <div class="Ejercicio-Interactivo" id="presion1">
+    <h4>1. Se va a levantar una carga de 500 kg que está sobre el elevador hidráulico que se muestra en la figura.<br>
+      Vertiendo aceite (ρ = 780 kg/m<sup>3</sup>) en un tubo delgado. 
+      Determine cuál debe ser la altura <em>h</em> para empezar a levantar el peso.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Presi1.png" width="250"></div>
+    <div class="pregunta">
+      <label for="presion1-input">Respuesta en (cm): </label>
+      <input type="number" id="presion1-input" step="0.01" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo tres cifras significativas">
+      <div class="feedback" id="fb-presion1"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioPresion1()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('presion1')">Mostrar Solución</button>
+    <div id="solucion-presion1" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=B26-gxw3dr4">
+        <div class="banner"><img src="ImagSoluciones/solucion-tension1.png" alt="Solución del ejercicio 1 de tension" width="500"></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PRESION 2 PUNTOOOO-->
+  <div class="Ejercicio-Interactivo" id="presion2">
+    <h4>2. Un hombre que pesa 200 lb, tiene un área total de impresión de sus pies de 72 in<sup>2</sup>. Determine la presión que este 
+    hombre ejerce sobre el suelo si.<br>
+    2.1. Está parado sobre los dos pies.<br>
+    2.2. Está parado sobre uno de ellos.</h4>
+
+    <div class="pregunta">
+      <label for="presion2-a">2.1 Respuesta en (Psi):</label>
+      <input type="number" id="presion2-a" step="0.01" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo tres cifras significativas">
+      <div class="feedback" id="fb-presion2-a"></div>
+    </div>
+
+    <div class="pregunta">
+      <label for="presion2-b">2.2 Respuesta en (Psi):</label>
+      <input type="number" id="presion2-b" step="0.01" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo tres cifras significativas">
+      <div class="feedback" id="fb-presion2-b"></div>
+    </div>
+
+    <button class="btn-verificar" onclick="verificarEjercicioPresion2()">Verificar respuestas</button>
+    <button class="btn-solucion" onclick="toggleSolucion('presion2')">Mostrar Solución</button>
+
+    <div id="solucion-presion2" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=JAKBuFiBKRk">
+        <div class="banner"><img src="ImagSoluciones/solucion-presion2.1.png" alt="Solución del ejercicio 2 de presion" width="500"></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PRESION 3 PUNTOOOO-->
+  <div class="Ejercicio-Interactivo" id="presion3">
+    <h4>3. Considere un tubo en U, cuyas ramas están abiertas a la atmósfera. Ahora se vierte agua en una de las ramas del tubo y aceite ligero 
+      (ρ = 790 kg/m<sup>3</sup>) en la otra. Una de las ramas contiene agua en un tramo de 70 cm de altura, en tanto que la otra
+      contiene los dos fluidos con una proporción de alturas de aceite-agua de 6. Determine la altura de cada fluido en esa rama.
+    </h4>
+    <div class="banner"><img height="50%" src="Esquemas/Esque_Presi3.png" width="300"></div>
+    <div class="pregunta">
+      <label for="presion3-input">Altura del aceite en la rama derecha (cm): </label>
+      <input type="number" id="presion3-input" step="0.1" placeholder="Digite la respuesta aquí con '.' (punto decimal) y con máximo tres cifras significativas">
+      <div class="feedback" id="fb-presion3"></div>
+    </div>
+    <button class="btn-verificar" onclick="verificarEjercicioPresion3()">Verificar Respuesta</button>
+    <button class="btn-solucion" onclick="toggleSolucion('presion3')">Mostrar Solución</button>
+    <div id="solucion-presion3" class="panel-solucion" style="display: none;">
+      <a href="https://www.youtube.com/watch?v=YsSEW2bz1QY">
+        <div class="banner"><img src="ImagSoluciones/solucion-presion3.png" alt="Solución del ejercicio 3 de presion" width="500"></div>
+      </a>
+    </div>
+  </div>
+</div> <!-- Cierre de tema-presion -->
+
+<!-- Calculadora de Unidades Flotante -->
+<div id="calculadora-flotante" class="calculadora-cerrada">
+  <button id="btn-toggle-calculadora" onclick="toggleCalculadora()">
+    🔢 Calculadora
+  </button>
+  <div id="calculadora-contenido">
+    <h3>🔄 Conversor de Unidades</h3>
+    
+    <div class="calc-seccion">
+      <label>Categoría:</label>
+      <select id="calc-categoria" onchange="cambiarCategoria()">
+        <option value="longitud">📏 Longitud</option>
+        <option value="presion">⚙ Presión</option>
+        <option value="fuerza">💪 Fuerza</option>
+        <option value="densidad">🧪 Densidad</option>
+        <option value="viscosidad">💧 Viscosidad</option>
+        <option value="velocidad">🚀 Velocidad</option>
+        <option value="area">📐 Área</option>
+        <option value="volumen">📦 Volumen</option>
+        <option value="torque">🔧 Torque</option>
+        <option value="temperatura">🌡 Temperatura</option>
+      </select>
+    </div>
+    
+    <div class="calc-seccion">
+      <label>De:</label>
+      <select id="calc-de"></select>
+    </div>
+    
+    <div class="calc-seccion">
+      <label>A:</label>
+      <select id="calc-a"></select>
+    </div>
+    
+    <div class="calc-seccion">
+      <label>Valor:</label>
+      <input type="number" id="calc-valor" placeholder="Ingresa el valor" oninput="convertirUnidad()">
+    </div>
+    
+    <div class="calc-resultado">
+      <span id="calc-resultado-texto">Resultado: --</span>
+    </div>
+    
+    <button class="btn-copiar" onclick="copiarResultado()">📋 Copiar resultado</button>
+  </div>
+</div>
+
+<!-- Botón para descargar CSV -->
+<div id="seccion-descarga" class="pantalla-oculta">
+  <div class="descarga-container" style="text-align: center; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; margin: 20px; color: white;">
+    <h2>🎉 ¡Felicidades!</h2>
+    <p>Has completado todos los ejercicios. Descarga tu reporte de resultados.</p>
+    <button id="btn-descargar-csv" onclick="descargarCSV()" style="padding: 15px 30px; font-size: 18px; background: #fff; color: #667eea; border: none; border-radius: 10px; cursor: pointer; font-weight: bold;">
+      📥 Descargar Resultados (CSV)
+    </button>
+    <button onclick="volverTemas()" style="padding: 15px 30px; font-size: 16px; background: transparent; color: white; border: 2px solid white; border-radius: 10px; cursor: pointer; margin-left: 10px;">
+      ⬅ Volver al menú
+    </button>
+  </div>
+</div>
+
+<script>
+  // === FUNCIONES GLOBALES ===
+  // Variable para almacenar resultados
+  let resultadosUsuario = {};
+  let nombreUsuarioGlobal = "";
+  let correoUsuarioGlobal = "";
+
+  function iniciarPagina() {
+    const nombre = document.getElementById("nombreUsuario").value.trim();
+    const correo = document.getElementById("correoUsuario").value.trim();
+    
+    if (nombre === "") {
+      alert("Por favor, ingresa tu nombre para continuar.");
+      return;
+    }
+    
+    if (correo === "") {
+      alert("Por favor, ingresa tu correo electrónico para continuar.");
+      return;
+    }
+    
+    // Validar formato de correo electrónico
+    const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexCorreo.test(correo)) {
+      alert("Por favor, ingresa un correo electrónico válido.");
+      return;
+    }
+    
+    nombreUsuarioGlobal = nombre;
+    correoUsuarioGlobal = correo;
+    document.getElementById("pantalla-inicio").classList.replace("pantalla-activa", "pantalla-oculta");
+    document.getElementById("pantalla-temas").classList.replace("pantalla-oculta", "pantalla-activa");
+    document.getElementById("saludo").innerText = ¡Hola, ${nombre}! 👋;
+  }
+
+  function mostrarTema(tema) {
+    document.getElementById("pantalla-temas").classList.replace("pantalla-activa", "pantalla-oculta");
+    document.getElementById("tema-" + tema).classList.replace("pantalla-oculta", "pantalla-activa");
+  }
+
+  function volverTemas() {
+    const pantallas = document.querySelectorAll('[id^="tema-"]');
+    pantallas.forEach(p => p.classList.replace("pantalla-activa", "pantalla-oculta"));
+    document.getElementById("pantalla-temas").classList.replace("pantalla-oculta", "pantalla-activa");
+  }
+
+  function toggleSolucion(idEjercicio) {
+    const panel = document.getElementById(solucion-${idEjercicio});
+    if (panel) {
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
+    }
+  }
+
+  // === VISCOSIDAD ===
+  const respuestasCorrectas = {
+    viscosidad1: 0.0000999  
+  };
+  const toleranciaExacta = 0.000005;   
+  const toleranciaCercana = 0.000010;  
+
+  function verificarEjercicio(idEjercicio) {
+    const input = document.getElementById(idEjercicio + '-input');
+    const feedback = document.getElementById('fb-' + idEjercicio);
+    const valorIngresado = parseFloat(input.value);
+    const valorCorrecto = respuestasCorrectas[idEjercicio];
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrecto);
+    const porcentajeError = Math.abs(valorCorrecto) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrecto)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} Pa·s<br>Valor correcto: ${valorCorrecto} Pa·s<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExacta) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercana) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    // Guardar resultado
+    resultadosUsuario[idEjercicio] = {
+      respuesta: valorIngresado,
+      resultado: resultado
+    };
+    verificarTodosCompletados();
+  }
+
+  // Viscosidad 2
+  function verificarEjercicioViscosidad2() {
+    const valorCorrectoViscosidad2 = 0.000682;
+    const toleranciaExactaVisc2 = 0.000034;   
+    const toleranciaCercanaVisc2 = 0.000068;  
+    const input = document.getElementById('viscosidad2-input');
+    const feedback = document.getElementById('fb-viscosidad2');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoViscosidad2);
+    const porcentajeError = Math.abs(valorCorrectoViscosidad2) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoViscosidad2)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} lb·s/ft²<br>Valor correcto: ${valorCorrectoViscosidad2} lb·s/ft²<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaVisc2) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaVisc2) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['viscosidad2'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  // Viscosidad 3
+  function verificarEjercicioViscosidad3() {
+    const valorCorrectoViscosidad3 = 0.01385; 
+    const toleranciaExactaVisc3 = 0.00069;   
+    const toleranciaCercanaVisc3 = 0.00139;  
+    const input = document.getElementById('viscosidad3-input');
+    const feedback = document.getElementById('fb-viscosidad3');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoViscosidad3);
+    const porcentajeError = Math.abs(valorCorrectoViscosidad3) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoViscosidad3)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} Pa·s<br>Valor correcto: ${valorCorrectoViscosidad3} Pa·s<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaVisc3) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaVisc3) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['viscosidad3'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  // Viscosidad 4
+  function verificarEjercicioViscosidad4() {
+    const valorCorrectoViscosidad4 = 0.000084; 
+    const toleranciaExactaVisc4 = 0.0000042;  
+    const toleranciaCercanaVisc4 = 0.0000084;  
+    const input = document.getElementById('viscosidad4-input');
+    const feedback = document.getElementById('fb-viscosidad4');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoViscosidad4);
+    const porcentajeError = Math.abs(valorCorrectoViscosidad4) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoViscosidad4)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} lb·s/ft²<br>Valor correcto: ${valorCorrectoViscosidad4} lb·s/ft²<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaVisc4) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaVisc4) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['viscosidad4'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  // === TENSIÓN SUPERFICIAL ===
+  function verificarEjercicioTension1() {
+    const valorCorrectoTension1 = 4.07; 
+    const toleranciaExactaTens1 = 0.20;   
+    const toleranciaCercanaTens1 = 0.41;  
+    const input = document.getElementById('tension1-input');
+    const feedback = document.getElementById('fb-tension1');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoTension1);
+    const porcentajeError = Math.abs(valorCorrectoTension1) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoTension1)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} mm<br>Valor correcto: ${valorCorrectoTension1} mm<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaTens1) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaTens1) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['tension1'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  function verificarEjercicioTension2() {
+    const valorCorrectoTension2 = 562.5; 
+    const toleranciaExactaTens2 = 28.13;   
+    const toleranciaCercanaTens2 = 56.25; 
+    const input = document.getElementById('tension2-input');
+    const feedback = document.getElementById('fb-tension2');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoTension2);
+    const porcentajeError = Math.abs(valorCorrectoTension2) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoTension2)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} kg/m³<br>Valor correcto: ${valorCorrectoTension2} kg/m³<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaTens2) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaTens2) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['tension2'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  function verificarEjercicioTension3() {
+    const valorCorrectoTension3 = -0.0224; 
+    const toleranciaExactaTens3 = 0.00112;   
+    const toleranciaCercanaTens3 = 0.00224;  
+    const input = document.getElementById('tension3-input');
+    const feedback = document.getElementById('fb-tension3');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoTension3);
+    const porcentajeError = Math.abs(valorCorrectoTension3) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoTension3)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} in<br>Valor correcto: ${valorCorrectoTension3} in<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaTens3) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaTens3) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['tension3'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  // === PRESIÓN ===
+  function verificarEjercicioPresion1() {
+    const valorCorrectoPresion1 = 56.68; 
+    const toleranciaExactaPres1 = 2.83;  
+    const toleranciaCercanaPres1 = 5.67;  
+    const input = document.getElementById('presion1-input');
+    const feedback = document.getElementById('fb-presion1');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoPresion1);
+    const porcentajeError = Math.abs(valorCorrectoPresion1) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoPresion1)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} cm<br>Valor correcto: ${valorCorrectoPresion1} cm<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaPres1) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaPres1) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    resultadosUsuario['presion1'] = { respuesta: valorIngresado, resultado: resultado };
+    verificarTodosCompletados();
+  }
+
+  function verificarEjercicioPresion2() {
+    const valorCorrectoPresion2a = 200 / 72;  
+    const valorCorrectoPresion2b = 200 / 36;   
+    const toleranciaExactaPres2 = 0.14;   
+    const toleranciaCercanaPres2 = 0.28;  
+
+    function verificarIndividual(idInput, valorCorrecto, idResultado) {
+      const input = document.getElementById(idInput);
+      const feedback = document.getElementById('fb-' + idInput);
+      const valorIngresado = parseFloat(input.value);
+
+      if (isNaN(valorIngresado)) {
+        feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+        return;
+      }
+
+      const errorAbsoluto = Math.abs(valorIngresado - valorCorrecto);
+      const porcentajeError = Math.abs(valorCorrecto) > 0 
+        ? ((errorAbsoluto / Math.abs(valorCorrecto)) * 100).toFixed(2)
+        : '∞';
+
+      let mensaje = Tu respuesta: ${valorIngresado} psi<br>Valor correcto: ${valorCorrecto.toFixed(3)} psi<br>Error: ${porcentajeError}%;
+      let resultado = "";
+
+      if (errorAbsoluto <= toleranciaExactaPres2) {
+        feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+        resultado = "Correcto";
+      } else if (errorAbsoluto <= toleranciaCercanaPres2) {
+        feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+        resultado = "Cercano";
+      } else {
+        feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+        resultado = "Incorrecto";
+      }
+
+      resultadosUsuario[idResultado] = { respuesta: valorIngresado, resultado: resultado };
+    }
+
+    verificarIndividual('presion2-a', valorCorrectoPresion2a, 'presion2a');
+    verificarIndividual('presion2-b', valorCorrectoPresion2b, 'presion2b');
+    verificarTodosCompletados();
+  }
+
+  function verificarEjercicioPresion3() {
+    const valorCorrectoPresion3 = 73.17;
+    const toleranciaExactaPres3 = 3.66;  
+    const toleranciaCercanaPres3 = 7.32;  
+    const input = document.getElementById('presion3-input');
+    const feedback = document.getElementById('fb-presion3');
+    const valorIngresado = parseFloat(input.value);
+
+    if (isNaN(valorIngresado)) {
+      feedback.innerHTML = '<span style="color: red;">⚠ Ingresa un número válido.</span>';
+      return;
+    }
+
+    const errorAbsoluto = Math.abs(valorIngresado - valorCorrectoPresion3);
+    const porcentajeError = Math.abs(valorCorrectoPresion3) > 0 
+      ? ((errorAbsoluto / Math.abs(valorCorrectoPresion3)) * 100).toFixed(2)
+      : '∞';
+
+    let mensaje = Tu respuesta: ${valorIngresado} cm<br>Valor correcto: ${valorCorrectoPresion3} cm<br>Error: ${porcentajeError}%;
+    let resultado = "";
+
+    if (errorAbsoluto <= toleranciaExactaPres3) {
+      feedback.innerHTML = <span style="color: green; font-weight: bold;">✅ ¡Correcto! ${mensaje}</span>;
+      resultado = "Correcto";
+    } else if (errorAbsoluto <= toleranciaCercanaPres3) {
+      feedback.innerHTML = <span style="color: orange; font-weight: bold;">⚠ Cercano. ${mensaje}</span>;
+      resultado = "Cercano";
+    } else {
+      feedback.innerHTML = <span style="color: red; font-weight: bold;">❌ Incorrecto. ${mensaje}</span>;
+      resultado = "Incorrecto";
+    }
+
+    // Guardar resultado
+    resultadosUsuario['presion3'] = {
+      respuesta: valorIngresado,
+      resultado: resultado
+    };
+    verificarTodosCompletados();
+  }
+
+  // Función para verificar si todos los ejercicios están completados
+  function verificarTodosCompletados() {
+    const ejerciciosRequeridos = [
+      'viscosidad1', 'viscosidad2', 'viscosidad3', 'viscosidad4',
+      'tension1', 'tension2', 'tension3',
+      'presion1', 'presion2a', 'presion2b', 'presion3'
+    ];
+    
+    const completados = ejerciciosRequeridos.filter(ej => resultadosUsuario[ej]).length;
+    
+    if (completados === ejerciciosRequeridos.length) {
+      document.getElementById('seccion-descarga').classList.replace('pantalla-oculta', 'pantalla-activa');
+    }
+  }
+
+  // Función para descargar CSV
+  function descargarCSV() {
+    let csv = "Nombre,Correo,Ejercicio,Respuesta,Resultado\n";
+    
+    const ejercicios = [
+      { id: 'viscosidad1', nombre: 'Viscosidad 1' },
+      { id: 'viscosidad2', nombre: 'Viscosidad 2' },
+      { id: 'viscosidad3', nombre: 'Viscosidad 3' },
+      { id: 'viscosidad4', nombre: 'Viscosidad 4' },
+      { id: 'tension1', nombre: 'Tension Superficial 1' },
+      { id: 'tension2', nombre: 'Tension Superficial 2' },
+      { id: 'tension3', nombre: 'Tension Superficial 3' },
+      { id: 'presion1', nombre: 'Presion 1' },
+      { id: 'presion2a', nombre: 'Presion 2.1' },
+      { id: 'presion2b', nombre: 'Presion 2.2' },
+      { id: 'presion3', nombre: 'Presion 3' }
+    ];
+
+    ejercicios.forEach(ej => {
+      const dato = resultadosUsuario[ej.id];
+      if (dato) {
+        // Convertir resultado a Correcto/Incorrecto (Cercano cuenta como Incorrecto)
+        const resultadoFinal = dato.resultado === "Correcto" ? "Correcto" : "Incorrecto";
+        csv += "${nombreUsuarioGlobal}","${correoUsuarioGlobal}","${ej.nombre}","${dato.respuesta}","${resultadoFinal}"\n;
+      } else {
+        csv += "${nombreUsuarioGlobal}","${correoUsuarioGlobal}","${ej.nombre}","Sin respuesta","Incorrecto"\n;
+      }
+    });
+
+    // Crear y descargar archivo
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', resultados_${nombreUsuarioGlobal.replace(/\s+/g, '_')}.csv);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  // === CALCULADORA DE UNIDADES ===
+  const unidades = {
+    longitud: {
+      'm': 1,
+      'cm': 0.01,
+      'mm': 0.001,
+      'km': 1000,
+      'in': 0.0254,
+      'ft': 0.3048,
+      'yd': 0.9144,
+      'mi': 1609.34
+    },
+    presion: {
+      'Pa': 1,
+      'kPa': 1000,
+      'MPa': 1000000,
+      'bar': 100000,
+      'atm': 101325,
+      'psi': 6894.76,
+      'mmHg': 133.322,
+      'inHg': 3386.39
+    },
+    fuerza: {
+      'N': 1,
+      'kN': 1000,
+      'lbf': 4.44822,
+      'kgf': 9.80665,
+      'dyn': 0.00001
+    },
+    densidad: {
+      'kg/m³': 1,
+      'g/cm³': 1000,
+      'g/L': 1,
+      'lb/ft³': 16.0185,
+      'lb/in³': 27679.9
+    },
+    viscosidad: {
+      'Pa·s': 1,
+      'mPa·s': 0.001,
+      'cP (centipoise)': 0.001,
+      'P (poise)': 0.1,
+      'lb·s/ft²': 47.8803,
+      'lb/(ft·s)': 1.48816
+    },
+    velocidad: {
+      'm/s': 1,
+      'km/h': 0.277778,
+      'ft/s': 0.3048,
+      'mph': 0.44704,
+      'rpm (rad/s)': 0.10472
+    },
+    area: {
+      'm²': 1,
+      'cm²': 0.0001,
+      'mm²': 0.000001,
+      'ft²': 0.092903,
+      'in²': 0.00064516
+    },
+    volumen: {
+      'm³': 1,
+      'L': 0.001,
+      'mL': 0.000001,
+      'cm³': 0.000001,
+      'ft³': 0.0283168,
+      'in³': 0.0000163871,
+      'gal (US)': 0.00378541
+    },
+    torque: {
+      'N·m': 1,
+      'kN·m': 1000,
+      'lb·ft': 1.35582,
+      'lb·in': 0.112985,
+      'kgf·m': 9.80665
+    },
+    temperatura: {
+      '°C': 'celsius',
+      '°F': 'fahrenheit',
+      'K': 'kelvin'
+    }
+  };
+
+  let resultadoActual = '';
+
+  function toggleCalculadora() {
+    const calc = document.getElementById('calculadora-flotante');
+    calc.classList.toggle('calculadora-cerrada');
+    calc.classList.toggle('calculadora-abierta');
+  }
+
+  function cambiarCategoria() {
+    const categoria = document.getElementById('calc-categoria').value;
+    const selectDe = document.getElementById('calc-de');
+    const selectA = document.getElementById('calc-a');
+    
+    selectDe.innerHTML = '';
+    selectA.innerHTML = '';
+    
+    const unidadesCategoria = Object.keys(unidades[categoria]);
+    
+    unidadesCategoria.forEach(u => {
+      selectDe.innerHTML += <option value="${u}">${u}</option>;
+      selectA.innerHTML += <option value="${u}">${u}</option>;
+    });
+    
+    // Seleccionar segunda opción para "A" si existe
+    if (unidadesCategoria.length > 1) {
+      selectA.selectedIndex = 1;
+    }
+    
+    convertirUnidad();
+  }
+
+  function convertirUnidad() {
+    const categoria = document.getElementById('calc-categoria').value;
+    const de = document.getElementById('calc-de').value;
+    const a = document.getElementById('calc-a').value;
+    const valor = parseFloat(document.getElementById('calc-valor').value);
+    const resultadoTexto = document.getElementById('calc-resultado-texto');
+    
+    if (isNaN(valor)) {
+      resultadoTexto.textContent = 'Resultado: --';
+      resultadoActual = '';
+      return;
+    }
+    
+    let resultado;
+    
+    // Caso especial para temperatura
+    if (categoria === 'temperatura') {
+      resultado = convertirTemperatura(valor, de, a);
+    } else {
+      // Conversión estándar: valor * (factor_de / factor_a)
+      const factorDe = unidades[categoria][de];
+      const factorA = unidades[categoria][a];
+      resultado = valor * (factorDe / factorA);
+    }
+    
+    // Formatear resultado
+    let resultadoFormateado;
+    if (Math.abs(resultado) < 0.0001 || Math.abs(resultado) >= 1000000) {
+      resultadoFormateado = resultado.toExponential(6);
+    } else {
+      resultadoFormateado = resultado.toPrecision(6);
+    }
+    
+    resultadoActual = resultadoFormateado;
+    resultadoTexto.innerHTML = <strong>${valor} ${de}</strong> = <strong style="color: #0066aa;">${resultadoFormateado} ${a}</strong>;
+  }
+
+  function convertirTemperatura(valor, de, a) {
+    // Primero convertir a Celsius
+    let celsius;
+    if (de === '°C') celsius = valor;
+    else if (de === '°F') celsius = (valor - 32) * 5/9;
+    else if (de === 'K') celsius = valor - 273.15;
+    
+    // Luego convertir de Celsius a la unidad destino
+    if (a === '°C') return celsius;
+    else if (a === '°F') return celsius * 9/5 + 32;
+    else if (a === 'K') return celsius + 273.15;
+  }
+
+  function copiarResultado() {
+    if (resultadoActual) {
+      navigator.clipboard.writeText(resultadoActual).then(() => {
+        const btn = document.querySelector('.btn-copiar');
+        const textoOriginal = btn.textContent;
+        btn.textContent = '✅ ¡Copiado!';
+        btn.style.background = '#28a745';
+        setTimeout(() => {
+          btn.textContent = textoOriginal;
+          btn.style.background = '';
+        }, 1500);
+      });
+    }
+  }
+
+  // Inicializar calculadora al cargar
+  document.addEventListener('DOMContentLoaded', function() {
+    cambiarCategoria();
+  });
+</script>
+
+</body>
+</html>
